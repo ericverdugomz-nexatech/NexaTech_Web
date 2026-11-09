@@ -1,0 +1,2472 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080d18">
+<title>NexaTech | Tecnología, infraestructura y seguridad digital</title>
+<meta name="description" content="NexaTech: soluciones tecnológicas pensadas para empresas que buscan una infraestructura fiable, una gestión inteligente y una evolución digital segura.">
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+:root {
+    --bg: #080d18;
+    --surface: #101a2b;
+    --surface2: #142238;
+    --blue: #58a6ff;
+    --cyan: #49e1e6;
+    --white: #f2f6ff;
+    --muted: #9aaac2;
+    --border: rgba(120,160,220,.16);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--white);
+    line-height: 1.7;
+    overflow-x: hidden;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button {
+    font: inherit;
+}
+
+.container {
+    width: min(1160px, 90%);
+    margin: auto;
+}
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(8,13,24,.88);
+    backdrop-filter: blur(18px);
+    border-bottom: 1px solid var(--border);
+}
+
+.navbar {
+    min-height: 82px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 25px;
+}
+
+.logo {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 19px;
+    font-weight: 700;
+    letter-spacing: -.7px;
+}
+
+.logo span {
+    color: var(--cyan);
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+}
+
+.nav-links a {
+    color: var(--muted);
+    font-size: 13px;
+    font-weight: 600;
+    transition: .3s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--cyan);
+}
+
+.nav-contact {
+    border: 1px solid rgba(73,225,230,.5);
+    padding: 10px 18px;
+    border-radius: 6px;
+    color: var(--cyan) !important;
+}
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: 0;
+    color: white;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.page {
+    display: none;
+    min-height: 75vh;
+    animation: appear .5s ease;
+}
+
+.page.active {
+    display: block;
+}
+
+@keyframes appear {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.hero {
+    position: relative;
+    padding: 125px 0 115px;
+    overflow: hidden;
+    background:
+        radial-gradient(ellipse at 80% 35%, rgba(36,117,210,.19), transparent 42%),
+        radial-gradient(ellipse at 15% 80%, rgba(43,205,213,.08), transparent 40%);
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(100,150,220,.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(100,150,220,.035) 1px, transparent 1px);
+    background-size: 55px 55px;
+    mask-image: linear-gradient(to bottom, black, transparent);
+    pointer-events: none;
+}
+
+.hero-content {
+    position: relative;
+    max-width: 850px;
+}
+
+.eyebrow {
+    display: inline-block;
+    color: var(--cyan);
+    font-size: 11px;
+    letter-spacing: 3px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 22px;
+}
+
+.hero h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(43px, 7vw, 76px);
+    line-height: 1.08;
+    letter-spacing: -3px;
+    margin-bottom: 25px;
+}
+
+.gradient-text {
+    background: linear-gradient(100deg, var(--blue), var(--cyan));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.hero p {
+    max-width: 680px;
+    color: var(--muted);
+    font-size: 17px;
+    margin-bottom: 35px;
+}
+
+.buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 13px 23px;
+    border-radius: 5px;
+    font-size: 13px;
+    font-weight: 700;
+    transition: .3s;
+    cursor: pointer;
+}
+
+.btn-primary {
+    color: #06111d;
+    background: linear-gradient(100deg, var(--blue), var(--cyan));
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(73,225,230,.2);
+}
+
+.btn-outline {
+    border: 1px solid var(--border);
+    color: var(--white);
+}
+
+.btn-outline:hover {
+    border-color: var(--cyan);
+    color: var(--cyan);
+}
+
+section {
+    padding: 85px 0;
+}
+
+.section-heading {
+    max-width: 700px;
+    margin-bottom: 42px;
+}
+
+.section-heading h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(29px, 4vw, 43px);
+    line-height: 1.2;
+    margin-bottom: 15px;
+}
+
+.section-heading p {
+    color: var(--muted);
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.card {
+    background: linear-gradient(145deg, var(--surface), #0c1422);
+    border: 1px solid var(--border);
+    padding: 28px;
+    border-radius: 9px;
+    transition: .3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(73,225,230,.45);
+}
+
+.card-icon {
+    font-size: 29px;
+    margin-bottom: 18px;
+}
+
+.card h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 19px;
+    margin-bottom: 12px;
+}
+
+.card p {
+    color: var(--muted);
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.card-link {
+    color: var(--cyan);
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.specialties {
+    background: #0b1321;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+}
+
+.specialty-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.specialty {
+    padding: 19px 22px;
+    background: rgba(255,255,255,.025);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: #dce8fa;
+    font-size: 14px;
+}
+
+.specialty::before {
+    content: "✦";
+    color: var(--cyan);
+    margin-right: 12px;
+}
+
+.highlight {
+    background:
+        radial-gradient(ellipse at 90% 20%, rgba(73,225,230,.1), transparent 40%),
+        var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 48px;
+}
+
+.highlight p {
+    color: var(--muted);
+    max-width: 780px;
+    margin: 15px 0 25px;
+}
+
+.page-header {
+    padding: 100px 0 65px;
+    background:
+        radial-gradient(ellipse at 80% 10%, rgba(45,130,210,.18), transparent 45%),
+        #0a1220;
+    border-bottom: 1px solid var(--border);
+}
+
+.page-header h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(38px, 6vw, 60px);
+    line-height: 1.15;
+    margin-bottom: 20px;
+}
+
+.page-header p {
+    color: var(--muted);
+    max-width: 720px;
+    font-size: 16px;
+}
+
+.detail-content {
+    max-width: 850px;
+}
+
+.detail-content h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 27px;
+    margin: 38px 0 14px;
+}
+
+.detail-content h3 {
+    font-size: 18px;
+    margin: 25px 0 10px;
+}
+
+.detail-content p {
+    color: var(--muted);
+    margin-bottom: 17px;
+}
+
+.detail-content ul {
+    padding-left: 22px;
+    color: var(--muted);
+    margin: 15px 0 25px;
+}
+
+.detail-content li {
+    padding: 5px 0;
+}
+
+.project-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 22px 0;
+}
+
+.tag {
+    padding: 6px 12px;
+    border: 1px solid var(--border);
+    border-radius: 30px;
+    color: var(--cyan);
+    font-size: 11px;
+}
+
+.notice {
+    padding: 20px;
+    margin: 25px 0;
+    border-left: 3px solid var(--cyan);
+    background: rgba(73,225,230,.055);
+    color: #b9c9df;
+    font-size: 13px;
+}
+
+.contact-panel {
+    background: linear-gradient(145deg, #101e32, #0c1422);
+    border: 1px solid var(--border);
+    padding: 35px;
+    border-radius: 9px;
+    max-width: 720px;
+}
+
+.contact-panel p {
+    color: var(--muted);
+    margin: 12px 0 22px;
+}
+
+.email {
+    color: var(--cyan);
+    font-weight: 700;
+    font-size: 17px;
+    word-break: break-word;
+}
+
+footer {
+    padding: 35px 0;
+    border-top: 1px solid var(--border);
+    background: #070b13;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+footer p {
+    color: #77879f;
+    font-size: 12px;
+}
+
+footer a {
+    color: var(--cyan);
+}
+
+.back-link {
+    display: inline-block;
+    color: var(--cyan);
+    font-size: 13px;
+    margin-bottom: 28px;
+}
+
+@media(max-width: 850px) {
+    .nav-links {
+        gap: 15px;
+    }
+    .cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media(max-width: 650px) {
+    .navbar {
+        min-height: 70px;
+    }
+    .menu-toggle {
+        display: block;
+    }
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: #0b1321;
+        border-bottom: 1px solid var(--border);
+        padding: 25px 5%;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .nav-links.open {
+        display: flex;
+    }
+    .hero {
+        padding: 90px 0;
+    }
+    .hero h1 {
+        letter-spacing: -1.5px;
+    }
+    .cards,
+    .specialty-list {
+        grid-template-columns: 1fr;
+    }
+    section {
+        padding: 65px 0;
+    }
+    .highlight {
+        padding: 27px;
+    }
+}
+
+/* ===== VISUAL SYSTEM: FUTURISTIC / PREMIUM ===== */
+:root {
+    --bg: #060912;
+    --surface: rgba(15, 23, 40, .88);
+    --surface2: #121d31;
+    --blue: #83aaff;
+    --cyan: #70f0e4;
+    --gold: #d7bd82;
+    --white: #f5f4ef;
+    --muted: #a5afc2;
+    --border: rgba(174, 194, 231, .16);
+    --glow: rgba(112, 240, 228, .16);
+}
+body {
+    background:
+      radial-gradient(ellipse at 12% 4%, rgba(66, 91, 160, .16), transparent 32rem),
+      radial-gradient(ellipse at 88% 18%, rgba(112, 240, 228, .075), transparent 34rem),
+      #060912;
+    letter-spacing: .005em;
+}
+header {
+    background: rgba(5, 9, 18, .82);
+    border-bottom: 1px solid rgba(215,189,130,.20);
+    box-shadow: 0 10px 40px rgba(0,0,0,.18);
+}
+.logo { letter-spacing: -.8px; }
+.logo span { color: var(--gold); }
+.nav-links { gap: clamp(12px, 1.7vw, 23px); }
+.nav-links a { font-size: 12px; letter-spacing: .035em; }
+.nav-links a:hover, .nav-links a.active { color: var(--gold); }
+.nav-contact {
+    border-color: rgba(215,189,130,.55);
+    color: var(--gold) !important;
+}
+.hero {
+    background:
+      radial-gradient(ellipse at 78% 28%, rgba(94,135,221,.22), transparent 38%),
+      radial-gradient(ellipse at 22% 82%, rgba(112,240,228,.10), transparent 40%),
+      linear-gradient(135deg, #080e1c, #090d18 55%, #101728);
+}
+.hero::before {
+    background-image:
+      linear-gradient(rgba(174,194,231,.045) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(174,194,231,.045) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: linear-gradient(to bottom, black, transparent 88%);
+}
+.eyebrow {
+    color: var(--gold);
+    letter-spacing: 3.2px;
+}
+.gradient-text {
+    background: linear-gradient(105deg, #f0dfb7 0%, #b9d4ff 48%, #70f0e4 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+.hero h1 { text-shadow: 0 12px 60px rgba(112,240,228,.08); }
+.btn { border-radius: 3px; letter-spacing: .045em; }
+.btn-primary {
+    color: #09111b;
+    background: linear-gradient(110deg, #e1cca0, #9fd7db 72%, #70f0e4);
+    box-shadow: 0 8px 28px rgba(112,240,228,.12);
+}
+.btn-primary:hover { box-shadow: 0 12px 38px rgba(112,240,228,.22); }
+.btn-outline { border-color: rgba(215,189,130,.32); }
+.btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+section { position: relative; }
+.section-heading h2, .page-header h1, .detail-content h2 {
+    letter-spacing: -.035em;
+}
+.card, .highlight, .contact-panel, .specialty, .notice {
+    backdrop-filter: blur(14px);
+}
+.card {
+    background: linear-gradient(145deg, rgba(20,31,52,.92), rgba(8,14,26,.96));
+    border-color: rgba(174,194,231,.15);
+    border-radius: 5px;
+    box-shadow: 0 18px 55px rgba(0,0,0,.14);
+}
+.card:hover {
+    border-color: rgba(215,189,130,.52);
+    box-shadow: 0 18px 55px rgba(0,0,0,.24), 0 0 30px rgba(112,240,228,.055);
+}
+.card-link { color: var(--gold); }
+.specialties {
+    background: linear-gradient(120deg, rgba(12,20,36,.95), rgba(8,14,25,.95));
+}
+.specialty { border-radius: 4px; }
+.specialty::before { color: var(--gold); }
+.highlight {
+    background:
+      radial-gradient(ellipse at 90% 15%, rgba(112,240,228,.12), transparent 40%),
+      linear-gradient(135deg, rgba(20,31,52,.96), rgba(8,14,26,.96));
+    border-color: rgba(215,189,130,.25);
+    border-radius: 5px;
+}
+.page-header {
+    background:
+      radial-gradient(ellipse at 84% 10%, rgba(112,240,228,.12), transparent 36%),
+      radial-gradient(ellipse at 12% 65%, rgba(215,189,130,.08), transparent 40%),
+      linear-gradient(120deg, #0a1120, #080d18);
+}
+.tag { border-color: rgba(215,189,130,.28); color: #e4d4ad; }
+footer {
+    background: #050811;
+    border-top: 1px solid rgba(215,189,130,.20);
+}
+footer .logo span { color: var(--gold); }
+a:focus-visible, button:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 4px;
+}
+.network-hero-strip {
+    display:flex; flex-wrap:wrap; gap:10px; margin-top:28px;
+}
+.network-hero-strip span, .tech-pill {
+    display:inline-flex; align-items:center; gap:8px;
+    padding:8px 12px; border:1px solid rgba(215,189,130,.22);
+    background:rgba(255,255,255,.025); color:#d8e2f3;
+    font-size:11px; letter-spacing:.08em; text-transform:uppercase;
+}
+.network-grid {
+    display:grid; grid-template-columns:repeat(3,1fr); gap:18px;
+}
+.network-panel {
+    padding:25px; border:1px solid var(--border);
+    background:linear-gradient(145deg,rgba(17,28,48,.92),rgba(8,14,25,.94));
+    box-shadow:0 16px 45px rgba(0,0,0,.13);
+}
+.network-panel h3 {
+    font-family:'Space Grotesk',sans-serif; font-size:18px;
+    margin-bottom:10px; color:#f2f2ed;
+}
+.network-panel p, .network-panel li { color:var(--muted); font-size:13px; }
+.network-panel ul { padding-left:18px; margin-top:12px; }
+.network-panel li { margin:7px 0; }
+.network-number {
+    color:var(--gold); font-size:11px; letter-spacing:.18em;
+    text-transform:uppercase; margin-bottom:13px; display:block;
+}
+.network-flow {
+    display:grid; grid-template-columns:repeat(5,1fr); gap:10px; margin:24px 0;
+}
+.network-flow div {
+    padding:17px 13px; border:1px solid rgba(112,240,228,.18);
+    background:rgba(112,240,228,.035); text-align:center;
+}
+.network-flow b { display:block; color:var(--gold); font-size:12px; margin-bottom:6px; }
+.network-flow span { color:var(--muted); font-size:11px; }
+.network-table {
+    width:100%; border-collapse:collapse; margin-top:20px; font-size:13px;
+}
+.network-table th, .network-table td {
+    text-align:left; padding:15px 14px; border-bottom:1px solid var(--border); vertical-align:top;
+}
+.network-table th { color:var(--gold); font-size:11px; letter-spacing:.1em; text-transform:uppercase; }
+.network-table td { color:var(--muted); }
+.network-table td:first-child { color:var(--white); font-weight:700; }
+.network-callout {
+    border-left:2px solid var(--gold); padding:18px 22px;
+    background:rgba(215,189,130,.055); color:#e8e2d5; margin:26px 0;
+}
+.network-tags { display:flex; flex-wrap:wrap; gap:9px; margin-top:18px; }
+.network-cta {
+    padding:42px; border:1px solid rgba(215,189,130,.30);
+    background:radial-gradient(ellipse at 90% 0%,rgba(112,240,228,.12),transparent 45%),linear-gradient(130deg,#142039,#0a101d);
+}
+.network-cta h2 { font-family:'Space Grotesk',sans-serif; font-size:clamp(26px,4vw,38px); margin-bottom:12px; }
+.network-cta p { color:var(--muted); max-width:760px; margin-bottom:24px; }
+@media (max-width: 900px) {
+    .nav-links { gap:11px; }
+    .nav-links a { font-size:11px; }
+    .network-grid { grid-template-columns:repeat(2,1fr); }
+}
+@media (max-width: 700px) {
+    .nav-links { background:rgba(5,9,18,.98); border-bottom:1px solid var(--border); }
+    .network-grid { grid-template-columns:1fr; }
+    .network-flow { grid-template-columns:1fr 1fr; }
+    .network-table { display:block; overflow-x:auto; white-space:normal; }
+    .network-cta { padding:26px; }
+}
+
+
+/* ================= NEXATECH HOMEPAGE EXPERIENCE ================= */
+.nexatech-logo {
+    position:relative; display:inline-flex; flex-direction:column; gap:0;
+    font-size:21px; line-height:1; letter-spacing:.12em; color:#f5f4ef;
+}
+.nexatech-logo span { color:#d7bd82; }
+.nexatech-logo small {
+    margin-top:6px; font:600 7px/1 Inter,sans-serif;
+    letter-spacing:.29em; color:#8291aa;
+}
+.nx-hero {
+    min-height:690px; padding:70px 0 24px; position:relative; overflow:hidden;
+    background:
+      radial-gradient(ellipse at 77% 45%,rgba(69,112,184,.20),transparent 34%),
+      radial-gradient(ellipse at 16% 84%,rgba(112,240,228,.09),transparent 35%),
+      linear-gradient(118deg,#080d18 0%,#0b1425 54%,#080d18 100%);
+}
+.nx-hero::after {
+    content:""; position:absolute; width:580px; height:580px; border-radius:50%;
+    right:-180px; top:35px; border:1px solid rgba(215,189,130,.10);
+    box-shadow:0 0 0 42px rgba(112,240,228,.018),0 0 0 90px rgba(112,240,228,.014);
+    pointer-events:none;
+}
+.nx-hero-grid {
+    position:absolute; inset:0; opacity:.44; pointer-events:none;
+    background-image:linear-gradient(rgba(160,185,220,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(160,185,220,.035) 1px,transparent 1px);
+    background-size:52px 52px; mask-image:linear-gradient(90deg,black,transparent 92%);
+}
+.nx-hero-layout {
+    position:relative; z-index:2; display:grid; grid-template-columns:1.02fr .98fr;
+    align-items:center; gap:20px; min-height:560px;
+}
+.nx-hero-copy { max-width:610px; padding:35px 0 55px; }
+.nx-live-dot { display:inline-block; width:6px; height:6px; margin:0 9px 1px 0; border-radius:50%; background:#70f0e4; box-shadow:0 0 12px #70f0e4; }
+.nx-overline { color:#d7bd82!important; font-size:10px!important; letter-spacing:.28em; font-weight:700; margin:0 0 14px!important; }
+.nx-hero h1 {
+    font:600 clamp(48px,6.3vw,82px)/.99 'Space Grotesk',sans-serif;
+    letter-spacing:-.065em; margin:0 0 25px; color:#f5f4ef;
+}
+.nx-hero-lead { max-width:520px; color:#aab6c9; font-size:16px; line-height:1.9; margin-bottom:30px; }
+.nx-hero-actions .btn { padding:15px 21px; }
+.nx-hero-actions .btn span { margin-left:12px; font-size:17px; }
+.nx-hero-note { display:flex; align-items:center; gap:13px; margin-top:38px; color:#8291a8; font-size:11px; letter-spacing:.025em; }
+.nx-note-line { display:block; width:35px; height:1px; background:#d7bd82; }
+.nx-visual { position:relative; min-height:530px; display:flex; align-items:center; justify-content:center; isolation:isolate; }
+.nx-visual-aura { position:absolute; width:390px; height:390px; border-radius:50%; background:radial-gradient(circle,rgba(112,240,228,.13),rgba(80,120,190,.07) 42%,transparent 70%); filter:blur(12px); }
+.nx-network-svg { position:relative; z-index:2; width:min(100%,560px); overflow:visible; animation:nxFloat 9s ease-in-out infinite; }
+.nx-orbit { position:absolute; border:1px solid rgba(215,189,130,.22); border-radius:50%; transform:rotate(-24deg); }
+.nx-orbit-one { width:450px; height:170px; }
+.nx-orbit-two { width:490px; height:250px; transform:rotate(58deg); border-color:rgba(112,240,228,.17); }
+.nx-orbit-three { width:370px; height:370px; border-style:dashed; border-color:rgba(174,194,231,.14); }
+.nx-float-card {
+    position:absolute; z-index:4; display:flex; align-items:center; gap:12px;
+    padding:13px 16px; border:1px solid rgba(215,189,130,.25);
+    background:rgba(8,15,28,.84); backdrop-filter:blur(15px);
+    box-shadow:0 15px 45px rgba(0,0,0,.25);
+}
+.nx-float-card b { display:block; color:#f3f1e9; font-size:11px; font-weight:600; }
+.nx-float-card small { display:block; color:#8493aa; font-size:9px; margin-top:4px; }
+.nx-float-icon { color:#d7bd82; font-size:24px; }
+.nx-float-top { top:83px; right:0; }
+.nx-float-bottom { bottom:75px; left:-8px; }
+.nx-signal { display:flex; align-items:end; gap:3px; height:23px; }
+.nx-signal i { display:block; width:3px; background:#70f0e4; box-shadow:0 0 9px rgba(112,240,228,.4); }
+.nx-signal i:nth-child(1){height:9px}.nx-signal i:nth-child(2){height:17px}.nx-signal i:nth-child(3){height:13px}
+.nx-visual-caption { position:absolute; bottom:20px; right:6px; color:#697992; font-size:8px; letter-spacing:.25em; }
+.nx-hero-bottom { position:relative; z-index:3; display:flex; justify-content:space-between; align-items:center; padding:16px 0; border-top:1px solid rgba(174,194,231,.13); color:#718099; font-size:8px; letter-spacing:.19em; }
+.nx-scroll-mark b { color:#d7bd82; margin-left:8px; font-size:13px; }
+.nx-about { padding:125px 0 130px; background:linear-gradient(180deg,#080d18,#0b1220); }
+.nx-about-layout { display:grid; grid-template-columns:145px 1fr; gap:45px; }
+.nx-section-index { display:flex; align-items:flex-start; gap:13px; color:#d7bd82; font-size:12px; letter-spacing:.15em; }
+.nx-section-index i { display:block; width:38px; height:1px; background:rgba(215,189,130,.55); margin-top:9px; }
+.nx-section-index small { color:#728099; font-size:8px; letter-spacing:.16em; writing-mode:vertical-rl; margin-top:35px; margin-left:-65px; }
+.nx-about-main h2,.nx-specialization h2,.nx-approach h2,.nx-process h2 {
+    max-width:850px; font:500 clamp(32px,4.3vw,53px)/1.13 'Space Grotesk',sans-serif;
+    letter-spacing:-.045em; margin:0 0 30px;
+}
+.nx-about-columns { display:grid; grid-template-columns:1.1fr .9fr; gap:50px; max-width:930px; }
+.nx-about-columns p { color:#96a5bb; font-size:14px; line-height:1.95; }
+.nx-about-columns .nx-about-lead { color:#d8dfeb; font-size:17px; line-height:1.8; }
+.nx-signature { display:flex; align-items:center; gap:15px; margin-top:48px; color:#8c9ab0; font-size:9px; letter-spacing:.18em; }
+.nx-signature-line { width:42px; height:1px; background:#d7bd82; }
+.nx-specialization { padding:115px 0 120px; overflow:hidden; background:linear-gradient(130deg,#0d1729,#080e19 75%); border-top:1px solid rgba(174,194,231,.12); border-bottom:1px solid rgba(174,194,231,.12); }
+.nx-specialization-head { display:flex; justify-content:space-between; gap:45px; align-items:end; }
+.nx-specialization-head h2 { max-width:680px; margin-bottom:0; }
+.nx-specialization-head>p { max-width:350px; color:#94a3b9; font-size:13px; line-height:1.9; margin-bottom:7px; }
+.nx-specialization-visual { min-height:460px; margin:45px 0 35px; position:relative; display:flex; align-items:center; justify-content:center; }
+.nx-spec-orbit { position:absolute; border:1px solid rgba(112,240,228,.18); border-radius:50%; }
+.nx-spec-orbit-a { width:340px; height:340px; box-shadow:0 0 65px rgba(112,240,228,.05),inset 0 0 65px rgba(112,240,228,.035); }
+.nx-spec-orbit-b { width:470px; height:470px; border-style:dashed; border-color:rgba(215,189,130,.2); }
+.nx-spec-core { position:relative; z-index:2; width:190px; height:190px; border-radius:50%; display:flex; flex-direction:column; align-items:center; justify-content:center; border:1px solid rgba(215,189,130,.48); background:radial-gradient(circle at 50% 30%,#1c3450,#091321 72%); box-shadow:0 0 70px rgba(112,240,228,.10),inset 0 0 35px rgba(112,240,228,.08); }
+.nx-core-symbol { color:#d7bd82; font:500 54px/1 'Space Grotesk',sans-serif; }
+.nx-spec-core b { color:#f5f4ef; letter-spacing:.2em; font-size:11px; margin-top:9px; }
+.nx-spec-core small { color:#7f91aa; letter-spacing:.18em; font-size:7px; margin-top:6px; }
+.nx-spec-item { position:absolute; z-index:3; width:230px; padding:17px 19px; border:1px solid rgba(174,194,231,.18); background:rgba(8,15,28,.88); box-shadow:0 15px 38px rgba(0,0,0,.22); backdrop-filter:blur(12px); }
+.nx-spec-item span { color:#d7bd82; font-size:9px; letter-spacing:.16em; display:block; margin-bottom:7px; }
+.nx-spec-item b { color:#e9edf4; font-size:12px; display:block; }
+.nx-spec-item small { color:#8190a7; font-size:10px; display:block; margin-top:5px; }
+.nx-spec-one { top:35px; left:7%; }.nx-spec-two { top:35px; right:7%; }
+.nx-spec-three { bottom:35px; left:7%; }.nx-spec-four { bottom:35px; right:7%; }
+.nx-principles { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; border-top:1px solid rgba(174,194,231,.14); padding-top:32px; }
+.nx-principles article { display:flex; gap:15px; }
+.nx-principle-icon { color:#d7bd82; font-size:24px; }
+.nx-principles b { color:#e7ebf2; font-size:12px; }
+.nx-principles p { color:#8392a9; font-size:11px; line-height:1.8; margin-top:6px; }
+.nx-approach { padding:120px 0; background:#080d18; }
+.nx-approach-intro { max-width:750px; margin-bottom:48px; }
+.nx-approach-intro p { max-width:600px; color:#96a5bb; font-size:14px; line-height:1.9; margin-top:-12px; }
+.nx-approach-grid { display:grid; grid-template-columns:1.15fr 1fr 1fr; gap:17px; }
+.nx-approach-card { min-height:400px; padding:24px; border:1px solid rgba(174,194,231,.15); background:linear-gradient(145deg,rgba(17,28,48,.86),rgba(7,13,24,.96)); transition:.35s; }
+.nx-approach-card:hover { transform:translateY(-6px); border-color:rgba(215,189,130,.4); }
+.nx-approach-featured { background:linear-gradient(145deg,rgba(26,44,70,.92),rgba(8,14,26,.97)); }
+.nx-card-index { color:#d7bd82; font-size:8px; letter-spacing:.2em; }
+.nx-approach-art { height:160px; margin:20px 0 24px; position:relative; display:flex; align-items:center; justify-content:center; overflow:hidden; background:radial-gradient(circle,rgba(112,240,228,.09),transparent 67%); }
+.nx-approach-art>span { position:absolute; bottom:8px; color:#687992; font-size:8px; letter-spacing:.3em; }
+.nx-focus-ring { width:120px; height:120px; border:1px solid rgba(215,189,130,.7); border-radius:50%; box-shadow:0 0 0 14px rgba(112,240,228,.04),0 0 0 30px rgba(112,240,228,.025),0 0 45px rgba(112,240,228,.12); }
+.nx-focus-cross { position:absolute; width:170px; height:1px; background:linear-gradient(90deg,transparent,#70f0e4,transparent); transform:rotate(-35deg); }
+.nx-clarity-bars { display:flex; align-items:end; gap:8px; height:80px; }
+.nx-clarity-bars i { width:13px; border:1px solid rgba(112,240,228,.6); background:linear-gradient(0deg,rgba(112,240,228,.22),rgba(215,189,130,.4)); }
+.nx-clarity-bars i:nth-child(1){height:28px}.nx-clarity-bars i:nth-child(2){height:50px}.nx-clarity-bars i:nth-child(3){height:72px}.nx-clarity-bars i:nth-child(4){height:43px}.nx-clarity-bars i:nth-child(5){height:61px}
+.nx-detail-diamond { width:95px; height:95px; border:1px solid rgba(215,189,130,.65); transform:rotate(45deg); display:flex; align-items:center; justify-content:center; color:#d7bd82; font-size:38px; box-shadow:0 0 45px rgba(215,189,130,.09); }
+.nx-detail-diamond::first-letter { transform:rotate(-45deg); }
+.nx-approach-card h3 { color:#f0f1f4; font:500 20px/1.25 'Space Grotesk',sans-serif; margin-bottom:13px; }
+.nx-approach-card p { color:#8f9db2; font-size:12px; line-height:1.9; }
+.nx-process { padding:115px 0; background:linear-gradient(130deg,#0c1628,#080d18); border-top:1px solid rgba(174,194,231,.12); }
+.nx-process-layout { display:grid; grid-template-columns:.9fr 1.1fr; gap:90px; }
+.nx-process-copy>p { color:#94a3b9; font-size:14px; line-height:1.9; max-width:420px; }
+.nx-text-link { display:inline-block; color:#d7bd82; font-size:12px; margin-top:27px; padding-bottom:8px; border-bottom:1px solid rgba(215,189,130,.4); }
+.nx-text-link span { margin-left:12px; font-size:16px; }
+.nx-process-step { display:grid; grid-template-columns:42px 1fr 35px; gap:15px; align-items:start; padding:22px 0; border-bottom:1px solid rgba(174,194,231,.15); }
+.nx-process-step:first-child { border-top:1px solid rgba(174,194,231,.15); }
+.nx-process-step>span { color:#d7bd82; font-size:10px; letter-spacing:.12em; padding-top:3px; }
+.nx-process-step b { color:#eef0f4; font:500 17px 'Space Grotesk',sans-serif; }
+.nx-process-step p { color:#8493a9; font-size:11px; margin-top:6px; }
+.nx-process-step>i { color:#70f0e4; font-style:normal; font-size:20px; text-align:right; }
+.nx-final-cta { padding:105px 0 120px; background:#080d18; }
+.nx-cta-frame { min-height:370px; position:relative; overflow:hidden; border:1px solid rgba(215,189,130,.32); background:radial-gradient(ellipse at 90% 20%,rgba(112,240,228,.14),transparent 36%),linear-gradient(120deg,#17253d,#0a1120 72%); }
+.nx-cta-frame::before,.nx-cta-frame::after { content:""; position:absolute; border:1px solid rgba(112,240,228,.12); border-radius:50%; width:430px; height:430px; right:-85px; top:-35px; }
+.nx-cta-frame::after { width:330px; height:330px; right:-35px; top:15px; border-color:rgba(215,189,130,.2); }
+.nx-cta-content { position:relative; z-index:2; max-width:700px; padding:58px; }
+.nx-cta-content h2 { color:#f5f4ef; font:500 clamp(30px,4vw,47px)/1.12 'Space Grotesk',sans-serif; letter-spacing:-.04em; margin:0 0 18px; }
+.nx-cta-content p { color:#9ba9bd; font-size:13px; line-height:1.9; max-width:590px; margin-bottom:25px; }
+.nx-cta-mark { position:absolute; right:85px; top:50%; transform:translateY(-50%); z-index:1; font:500 130px 'Space Grotesk',sans-serif; color:rgba(215,189,130,.12); letter-spacing:-.1em; }
+.nx-cta-mark span { color:rgba(112,240,228,.13); }
+@keyframes nxFloat { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-12px)} }
+@media(max-width:950px) {
+    .nx-hero-layout { grid-template-columns:1fr  .85fr; }
+    .nx-hero h1 { font-size:clamp(46px,6vw,66px); }
+    .nx-float-top { right:-8px; }
+    .nx-spec-one,.nx-spec-three { left:0; }.nx-spec-two,.nx-spec-four { right:0; }
+    .nx-process-layout { gap:45px; }
+    .nx-approach-grid { grid-template-columns:1fr 1fr; }
+    .nx-approach-featured { grid-column:span 2; }
+}
+@media(max-width:700px) {
+    .nexatech-logo { font-size:18px; }
+    .nx-hero { padding:48px 0 15px; }
+    .nx-hero-layout { display:flex; flex-direction:column; align-items:stretch; gap:0; }
+    .nx-hero-copy { padding:35px 0 0; }
+    .nx-hero h1 { font-size:clamp(48px,13vw,68px); }
+    .nx-hero-lead { font-size:14px; }
+    .nx-visual { min-height:390px; margin-top:0; }
+    .nx-network-svg { width:min(100%,390px); }
+    .nx-orbit-one { width:310px; height:120px; }.nx-orbit-two { width:340px; height:180px; }.nx-orbit-three { width:290px; height:290px; }
+    .nx-float-top { top:25px; right:0; }.nx-float-bottom { bottom:32px; left:0; }
+    .nx-hero-bottom { font-size:7px; letter-spacing:.08em; }.nx-hero-bottom>span:first-child { display:none; }
+    .nx-about { padding:80px 0; }
+    .nx-about-layout { grid-template-columns:1fr; gap:25px; }
+    .nx-section-index small { writing-mode:initial; margin:0; }
+    .nx-about-columns { grid-template-columns:1fr; gap:17px; }
+    .nx-specialization { padding:80px 0; }
+    .nx-specialization-head { display:block; }
+    .nx-specialization-head>p { margin-top:20px; }
+    .nx-specialization-visual { min-height:590px; margin:25px 0; }
+    .nx-spec-orbit-a { width:245px; height:245px; }.nx-spec-orbit-b { width:320px; height:320px; }
+    .nx-spec-core { width:145px; height:145px; }
+    .nx-spec-item { width:calc(50% - 8px); padding:12px; }
+    .nx-spec-item b { font-size:10px; }.nx-spec-item small { font-size:8px; }
+    .nx-spec-one { top:0; left:0; }.nx-spec-two { top:0; right:0; }
+    .nx-spec-three { bottom:0; left:0; }.nx-spec-four { bottom:0; right:0; }
+    .nx-principles { grid-template-columns:1fr; gap:20px; }
+    .nx-approach { padding:80px 0; }
+    .nx-approach-grid { grid-template-columns:1fr; }
+    .nx-approach-featured { grid-column:auto; }
+    .nx-approach-card { min-height:0; }
+    .nx-process { padding:80px 0; }
+    .nx-process-layout { grid-template-columns:1fr; gap:40px; }
+    .nx-final-cta { padding:75px 0; }
+    .nx-cta-content { padding:35px 25px; }
+    .nx-cta-mark { right:20px; top:auto; bottom:-25px; transform:none; font-size:90px; }
+}
+@media(prefers-reduced-motion:reduce) {
+    .nx-network-svg { animation:none; }
+    .nx-approach-card { transition:none; }
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="container navbar">
+        <a href="#inicio" class="logo nexatech-logo" aria-label="NexaTech, inicio">
+            NEXA<span>TECH</span><small>TECHNOLOGY PARTNERS</small>
+        </a>
+
+        <button class="menu-toggle" onclick="toggleMenu()" aria-label="Abrir menú">☰</button>
+
+        <nav class="nav-links" id="navLinks">
+            <a href="#inicio">Inicio</a>
+            <a href="#seguridad">Seguridad de red</a>
+            <a href="#ciberseguridad-avanzada">Ciberseguridad avanzada</a>
+            <a href="#dba-ia">DBA con IA</a>
+            <a href="#proyectos">Proyectos</a>
+            <a href="#contacto" class="nav-contact">Contacto</a>
+        </nav>
+    </div>
+</header>
+
+<main>
+
+<!-- ================= INICIO ================= -->
+
+<div class="page active" id="inicio">
+
+    <!-- HERO / PRESENTACIÓN DE MARCA -->
+    <section class="nx-hero">
+        <div class="nx-hero-grid"></div>
+        <div class="container nx-hero-layout">
+            <div class="nx-hero-copy">
+                <span class="eyebrow"><i class="nx-live-dot"></i> Tecnología · Confianza · Evolución</span>
+                <p class="nx-overline">BIENVENIDO A NEXATECH</p>
+                <h1>
+                    La tecnología<br>
+                    que impulsa tu<br>
+                    <span class="gradient-text">próximo nivel.</span>
+                </h1>
+                <p class="nx-hero-lead">
+                    Convertimos retos tecnológicos en soluciones claras, sólidas y preparadas
+                    para el futuro. Ayudamos a empresas y profesionales a trabajar con una
+                    tecnología más fiable, segura y eficiente.
+                </p>
+                <div class="buttons nx-hero-actions">
+                    <a href="#contacto" class="btn btn-primary">Hablemos de tu proyecto <span>↗</span></a>
+                    <a href="#nosotros" class="btn btn-outline">Conoce NexaTech</a>
+                </div>
+                <div class="nx-hero-note">
+                    <span class="nx-note-line"></span>
+                    <span>Una visión integral. Soluciones pensadas para personas y negocios.</span>
+                </div>
+            </div>
+
+            <!-- Ilustración vectorial propia: no depende de imágenes externas -->
+            <div class="nx-visual" aria-label="Ilustración abstracta de tecnología y conexiones digitales" role="img">
+                <div class="nx-visual-aura"></div>
+                <div class="nx-orbit nx-orbit-one"></div>
+                <div class="nx-orbit nx-orbit-two"></div>
+                <div class="nx-orbit nx-orbit-three"></div>
+                <svg class="nx-network-svg" viewBox="0 0 620 620" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <defs>
+                        <linearGradient id="nxLine" x1="0" y1="0" x2="1" y2="1">
+                            <stop offset="0" stop-color="#d7bd82" stop-opacity=".85"/>
+                            <stop offset="1" stop-color="#70f0e4" stop-opacity=".72"/>
+                        </linearGradient>
+                        <radialGradient id="nxCore">
+                            <stop offset="0" stop-color="#70f0e4" stop-opacity=".34"/>
+                            <stop offset=".55" stop-color="#83aaff" stop-opacity=".13"/>
+                            <stop offset="1" stop-color="#83aaff" stop-opacity="0"/>
+                        </radialGradient>
+                        <filter id="nxGlow">
+                            <feGaussianBlur stdDeviation="5" result="blur"/>
+                            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                        </filter>
+                    </defs>
+                    <circle cx="310" cy="310" r="218" fill="url(#nxCore)"/>
+                    <g stroke="url(#nxLine)" stroke-width="1.4" fill="none" opacity=".72">
+                        <path d="M310 92 L450 172 L510 310 L438 455 L310 520 L164 444 L100 310 L170 168 Z"/>
+                        <path d="M310 92 L310 210 L450 172 M450 172 L390 292 L510 310 M510 310 L390 350 L438 455 M438 455 L310 410 L310 520 M310 520 L230 390 L164 444 M164 444 L230 310 L100 310 M100 310 L230 230 L170 168 M170 168 L310 210"/>
+                        <path d="M170 168 L390 292 L438 455 M450 172 L230 310 L164 444 M310 92 L390 292 L310 520 M100 310 L310 410 L510 310"/>
+                    </g>
+                    <g fill="#08111f" stroke="#70f0e4" stroke-width="2" filter="url(#nxGlow)">
+                        <circle cx="310" cy="92" r="7"/><circle cx="450" cy="172" r="6"/>
+                        <circle cx="510" cy="310" r="7"/><circle cx="438" cy="455" r="6"/>
+                        <circle cx="310" cy="520" r="7"/><circle cx="164" cy="444" r="6"/>
+                        <circle cx="100" cy="310" r="7"/><circle cx="170" cy="168" r="6"/>
+                        <circle cx="230" cy="230" r="5"/><circle cx="390" cy="292" r="5"/>
+                        <circle cx="390" cy="350" r="5"/><circle cx="230" cy="390" r="5"/>
+                    </g>
+                    <circle cx="310" cy="310" r="112" fill="#0a1424" stroke="#d7bd82" stroke-opacity=".55"/>
+                    <circle cx="310" cy="310" r="96" fill="none" stroke="#70f0e4" stroke-opacity=".22" stroke-dasharray="3 8"/>
+                    <text x="310" y="300" fill="#f5f4ef" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="29" font-weight="700" letter-spacing="2">NEXA</text>
+                    <text x="310" y="334" fill="#d7bd82" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="23" font-weight="600" letter-spacing="4">TECH</text>
+                    <text x="310" y="363" fill="#9eafc8" text-anchor="middle" font-family="Inter, sans-serif" font-size="8" letter-spacing="3">CONNECT · PROTECT · EVOLVE</text>
+                </svg>
+                <div class="nx-float-card nx-float-top">
+                    <span class="nx-float-icon">✧</span>
+                    <span><b>Visión tecnológica</b><small>Conectamos cada pieza</small></span>
+                </div>
+                <div class="nx-float-card nx-float-bottom">
+                    <span class="nx-signal"><i></i><i></i><i></i></span>
+                    <span><b>Preparados para avanzar</b><small>Diseño · Confianza · Futuro</small></span>
+                </div>
+                <div class="nx-visual-caption">NEXATECH / DIGITAL ECOSYSTEM</div>
+            </div>
+        </div>
+        <div class="nx-hero-bottom container">
+            <span>01 — INNOVACIÓN CON SENTIDO</span>
+            <span class="nx-scroll-mark">DESCUBRE NEXATECH <b>↓</b></span>
+            <span>TECNOLOGÍA PARA AVANZAR</span>
+        </div>
+    </section>
+
+    <!-- PRESENTACIÓN DE LA EMPRESA -->
+    <section class="nx-about" id="nosotros">
+        <div class="container nx-about-layout">
+            <div class="nx-section-index">
+                <span>01</span>
+                <i></i>
+                <small>QUIÉNES SOMOS</small>
+            </div>
+            <div class="nx-about-main">
+                <span class="eyebrow">Más que tecnología</span>
+                <h2>Detrás de cada sistema hay un negocio. <span class="gradient-text">Y detrás de cada solución, una idea.</span></h2>
+                <div class="nx-about-columns">
+                    <p class="nx-about-lead">
+                        En NexaTech entendemos la tecnología como una herramienta para hacer
+                        que las cosas funcionen mejor. Nuestro propósito es acercar soluciones
+                        informáticas profesionales, prácticas y bien pensadas a quienes quieren
+                        construir, mejorar o proteger su entorno digital.
+                    </p>
+                    <p>
+                        Nos implicamos en comprender cada necesidad antes de plantear una
+                        respuesta. Analizamos el contexto, valoramos las alternativas y
+                        buscamos un equilibrio entre funcionalidad, seguridad y eficiencia.
+                        Hablamos claro, cuidamos los detalles y damos importancia a que cada
+                        solución tenga sentido en el día a día.
+                    </p>
+                </div>
+                <div class="nx-signature">
+                    <span class="nx-signature-line"></span>
+                    <span>TECNOLOGÍA CON VISIÓN. TRATO CERCANO. RESULTADOS CON SENTIDO.</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- POSICIONAMIENTO / ESPECIALIZACIÓN SIN TARJETAS DE SERVICIO -->
+    <section class="nx-specialization">
+        <div class="container">
+            <div class="nx-specialization-head">
+                <div>
+                    <span class="eyebrow">Nuestra especialización</span>
+                    <h2>Una mirada global para resolver <span class="gradient-text">retos reales.</span></h2>
+                </div>
+                <p>
+                    Combinamos conocimientos de infraestructura, sistemas, seguridad y datos
+                    para entender la tecnología como un conjunto y no como piezas aisladas.
+                </p>
+            </div>
+
+            <div class="nx-specialization-visual">
+                <div class="nx-spec-orbit nx-spec-orbit-a"></div>
+                <div class="nx-spec-orbit nx-spec-orbit-b"></div>
+                <div class="nx-spec-core">
+                    <span class="nx-core-symbol">N</span>
+                    <b>NEXATECH</b>
+                    <small>VISIÓN INTEGRAL</small>
+                </div>
+                <div class="nx-spec-item nx-spec-one">
+                    <span>01</span><b>Infraestructura digital</b><small>Una base tecnológica sólida</small>
+                </div>
+                <div class="nx-spec-item nx-spec-two">
+                    <span>02</span><b>Protección y confianza</b><small>Entornos pensados con seguridad</small>
+                </div>
+                <div class="nx-spec-item nx-spec-three">
+                    <span>03</span><b>Sistemas y conectividad</b><small>Todo trabajando en armonía</small>
+                </div>
+                <div class="nx-spec-item nx-spec-four">
+                    <span>04</span><b>Gestión inteligente</b><small>Información útil para evolucionar</small>
+                </div>
+            </div>
+
+            <div class="nx-principles">
+                <article>
+                    <span class="nx-principle-icon">⌖</span>
+                    <div><b>Comprender antes de actuar</b><p>Escuchamos, analizamos y definimos el problema antes de recomendar una solución.</p></div>
+                </article>
+                <article>
+                    <span class="nx-principle-icon">◇</span>
+                    <div><b>Diseñar con criterio</b><p>Priorizamos soluciones coherentes con los objetivos, recursos y contexto de cada proyecto.</p></div>
+                </article>
+                <article>
+                    <span class="nx-principle-icon">↗</span>
+                    <div><b>Construir para el futuro</b><p>Buscamos sistemas mantenibles, escalables y preparados para acompañar el crecimiento.</p></div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- DIFERENCIACIÓN -->
+    <section class="nx-approach">
+        <div class="container">
+            <div class="nx-approach-intro">
+                <span class="eyebrow">La experiencia NexaTech</span>
+                <h2>La diferencia está en <span class="gradient-text">cómo lo hacemos.</span></h2>
+                <p>No creemos en soluciones genéricas para necesidades distintas. Apostamos por un proceso claro, comunicación directa y decisiones justificadas.</p>
+            </div>
+            <div class="nx-approach-grid">
+                <article class="nx-approach-card nx-approach-featured">
+                    <span class="nx-card-index">01 / ENFOQUE</span>
+                    <div class="nx-approach-art nx-art-focus">
+                        <div class="nx-focus-ring"></div><div class="nx-focus-cross"></div><span>FOCUS</span>
+                    </div>
+                    <h3>Cada proyecto empieza escuchando.</h3>
+                    <p>Nos tomamos el tiempo para entender qué necesitas, qué tienes y qué quieres conseguir. Así evitamos añadir complejidad donde no hace falta.</p>
+                </article>
+                <article class="nx-approach-card">
+                    <span class="nx-card-index">02 / CLARIDAD</span>
+                    <div class="nx-approach-art nx-art-clarity">
+                        <div class="nx-clarity-bars"><i></i><i></i><i></i><i></i><i></i></div>
+                        <span>CLARITY</span>
+                    </div>
+                    <h3>Sin complicaciones innecesarias.</h3>
+                    <p>Explicamos las opciones, los pasos y las decisiones con transparencia. La tecnología tiene que ser comprensible para quien la utiliza.</p>
+                </article>
+                <article class="nx-approach-card">
+                    <span class="nx-card-index">03 / COMPROMISO</span>
+                    <div class="nx-approach-art nx-art-detail">
+                        <div class="nx-detail-diamond">✧</div><span>DETAIL</span>
+                    </div>
+                    <h3>El cuidado está en los detalles.</h3>
+                    <p>Valoramos la documentación, el orden y la mantenibilidad para que el resultado no solo funcione hoy, sino que pueda seguir evolucionando.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROCESO COMERCIAL -->
+    <section class="nx-process">
+        <div class="container nx-process-layout">
+            <div class="nx-process-copy">
+                <span class="eyebrow">De la idea a la solución</span>
+                <h2>Un camino claro. <span class="gradient-text">Decisiones compartidas.</span></h2>
+                <p>Queremos que sepas qué estamos haciendo, por qué lo hacemos y cuál es el siguiente paso. Por eso estructuramos cada colaboración con un proceso sencillo.</p>
+                <a href="#contacto" class="nx-text-link">Cuéntanos qué tienes en mente <span>↗</span></a>
+            </div>
+            <div class="nx-process-steps">
+                <div class="nx-process-step"><span>01</span><div><b>Escuchamos</b><p>Conocemos tu situación, tus objetivos y tus prioridades.</p></div><i>↘</i></div>
+                <div class="nx-process-step"><span>02</span><div><b>Analizamos</b><p>Estudiamos el contexto y valoramos las opciones posibles.</p></div><i>⌕</i></div>
+                <div class="nx-process-step"><span>03</span><div><b>Proponemos</b><p>Definimos un enfoque claro, realista y adaptado a tus necesidades.</p></div><i>◇</i></div>
+                <div class="nx-process-step"><span>04</span><div><b>Evolucionamos</b><p>Revisamos el resultado y detectamos oportunidades de mejora.</p></div><i>↗</i></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CIERRE / CTA -->
+    <section class="nx-final-cta">
+        <div class="container">
+            <div class="nx-cta-frame">
+                <div class="nx-cta-decoration"></div>
+                <div class="nx-cta-content">
+                    <span class="eyebrow">El siguiente paso empieza aquí</span>
+                    <h2>Tu próximo avance tecnológico <span class="gradient-text">empieza con una conversación.</span></h2>
+                    <p>Cuéntanos qué quieres mejorar, qué reto tienes delante o qué idea te gustaría poner en marcha. Estudiaremos contigo cómo darle forma.</p>
+                    <a href="#contacto" class="btn btn-primary">Contactar con NexaTech <span>↗</span></a>
+                </div>
+                <div class="nx-cta-mark">N<span>X</span></div>
+            </div>
+        </div>
+    </section>
+</div>
+
+
+<!-- ================= SEGURIDAD DE RED ================= -->
+
+<div class="page" id="seguridad">
+
+    <div class="page-header">
+        <div class="container">
+            <span class="eyebrow">Network Security</span>
+            <h1>Seguridad de <span class="gradient-text">red</span></h1>
+            <p>
+                Protege la infraestructura digital de tu negocio mediante
+                una red bien configurada, controlada y adaptada a tus necesidades.
+            </p>
+        </div>
+    </div>
+
+    <section>
+        <div class="container detail-content">
+
+            <a href="#inicio" class="back-link">← Volver al inicio</a>
+
+            <h2>La seguridad empieza por una buena infraestructura.</h2>
+
+            <p>
+                Hoy en día, prácticamente cualquier negocio depende de su red
+                informática para trabajar: ordenadores, servidores, impresoras,
+                dispositivos móviles, aplicaciones y servicios conectados.
+            </p>
+
+            <p>
+                Sin una configuración adecuada, estos elementos pueden quedar
+                expuestos a accesos no autorizados, errores de configuración
+                o interrupciones que afectan directamente al funcionamiento
+                de la actividad empresarial.
+            </p>
+
+            <p>
+                Nuestro servicio de seguridad de red está orientado a mejorar
+                la protección y organización de estas infraestructuras,
+                aplicando medidas preventivas y configuraciones adaptadas
+                al tamaño y las características de cada negocio.
+            </p>
+
+            <div class="notice">
+                Trabajamos exclusivamente con infraestructuras propias o
+                sistemas para los que el cliente haya autorizado expresamente
+                las tareas. Las revisiones de seguridad se realizan con un
+                enfoque preventivo y defensivo.
+            </div>
+
+            <h2>¿Qué podemos ofrecerte?</h2>
+
+            <h3>01. Configuración de firewalls</h3>
+            <p>
+                Instalación y configuración de soluciones firewall para
+                controlar el tráfico de red y establecer políticas de acceso
+                adecuadas. El objetivo es permitir únicamente las comunicaciones
+                necesarias para el funcionamiento de los servicios.
+            </p>
+
+            <h3>02. Segmentación de redes</h3>
+            <p>
+                Organización de la infraestructura mediante la separación
+                lógica de diferentes dispositivos y servicios. Por ejemplo,
+                podemos estudiar la separación entre equipos de trabajo,
+                servidores y dispositivos de invitados.
+            </p>
+
+            <h3>03. Revisión de configuraciones</h3>
+            <p>
+                Comprobación de configuraciones de red, permisos, servicios
+                expuestos y reglas de acceso para detectar posibles errores
+                y proponer mejoras de seguridad.
+            </p>
+
+            <h3>04. Protección de servidores</h3>
+            <p>
+                Revisión de configuraciones básicas de seguridad en servidores
+                Windows y Linux, gestión de accesos, actualizaciones y
+                servicios necesarios para su funcionamiento.
+            </p>
+
+            <h3>05. Acceso remoto seguro</h3>
+            <p>
+                Planificación de mecanismos de acceso remoto para que los
+                usuarios autorizados puedan conectarse a los recursos
+                empresariales de manera controlada y segura.
+            </p>
+
+            <h3>06. Documentación y recomendaciones</h3>
+            <p>
+                Entrega de documentación sobre los cambios realizados,
+                configuraciones relevantes y recomendaciones para facilitar
+                el mantenimiento posterior de la infraestructura.
+            </p>
+
+            <h2>Nuestro proceso de trabajo</h2>
+
+            <div class="cards">
+                <article class="card">
+                    <h3>01. Análisis</h3>
+                    <p>
+                        Conocemos la infraestructura existente, las necesidades
+                        del negocio y los problemas que se quieren resolver.
+                    </p>
+                </article>
+
+                <article class="card">
+                    <h3>02. Planificación</h3>
+                    <p>
+                        Definimos las medidas adecuadas y presentamos una
+                        propuesta con alcance, prioridades y presupuesto.
+                    </p>
+                </article>
+
+                <article class="card">
+                    <h3>03. Implementación</h3>
+                    <p>
+                        Aplicamos los cambios autorizados, verificamos
+                        su funcionamiento y documentamos el resultado.
+                    </p>
+                </article>
+            </div>
+
+            <h2>¿Para quién está pensado?</h2>
+
+            <p>
+                Este servicio está especialmente orientado a pequeñas empresas,
+                autónomos y profesionales que necesitan mejorar la seguridad
+                de su infraestructura sin tener que disponer de un departamento
+                informático propio.
+            </p>
+
+            <ul>
+                <li>Pequeñas empresas y oficinas.</li>
+                <li>Negocios con varios equipos conectados.</li>
+                <li>Entornos con servidores propios.</li>
+                <li>Profesionales que trabajan con información digital.</li>
+                <li>Proyectos que necesitan organizar mejor su infraestructura.</li>
+            </ul>
+
+            <h2>Una solución adaptada a tu negocio.</h2>
+
+            <p>
+                No todas las empresas necesitan la misma infraestructura
+                ni el mismo nivel de protección. Por eso, estudiamos cada
+                situación individualmente y proponemos mejoras realistas,
+                explicando qué se va a realizar y por qué.
+            </p>
+
+            <a href="#contacto" class="btn btn-primary">Solicitar información</a>
+        </div>
+    </section>
+</div>
+
+
+
+
+<!-- ================= CIBERSEGURIDAD AVANZADA ================= -->
+
+<div class="page" id="ciberseguridad-avanzada">
+    <div class="page-header">
+        <div class="container">
+            <span class="eyebrow">Advanced Network Defense · Zero Trust · Detection & Response</span>
+            <h1>La seguridad de tu red, <span class="gradient-text">diseñada para resistir.</span></h1>
+            <p>
+                Arquitectura, visibilidad y respuesta para organizaciones que necesitan
+                proteger sus comunicaciones, limitar el impacto de los incidentes y mantener
+                el control de sus entornos híbridos.
+            </p>
+            <div class="network-hero-strip">
+                <span>Zero Trust</span><span>Microsegmentación</span><span>NDR & SIEM</span>
+                <span>Cloud & OT</span><span>Resiliencia</span>
+            </div>
+            <div class="buttons" style="margin-top:30px">
+                <a href="#contacto" class="btn btn-primary">Solicitar evaluación inicial</a>
+                <a href="#red-servicios" class="btn btn-outline">Descubrir servicios</a>
+            </div>
+        </div>
+    </div>
+
+    <section>
+        <div class="container">
+            <div class="section-heading">
+                <span class="eyebrow">El nuevo escenario</span>
+                <h2>La red ya no tiene un único perímetro.</h2>
+                <p>
+                    El cifrado, el trabajo distribuido, los servicios cloud, los dispositivos
+                    conectados y el uso de identidades digitales exigen una defensa basada
+                    en contexto, comportamiento y visibilidad continua.
+                </p>
+            </div>
+            <div class="network-grid">
+                <article class="network-panel">
+                    <span class="network-number">01 / Tráfico cifrado</span>
+                    <h3>Más cifrado, nuevas señales</h3>
+                    <p>TLS 1.3 y tecnologías de privacidad reducen la visibilidad de la inspección clásica. La detección debe apoyarse también en metadatos, comportamiento y huellas criptográficas.</p>
+                </article>
+                <article class="network-panel">
+                    <span class="network-number">02 / Movimiento lateral</span>
+                    <h3>Contener antes de que se propague</h3>
+                    <p>Un acceso inicial no debe convertirse en acceso general. La segmentación y el análisis del tráfico interno ayudan a limitar el radio de impacto.</p>
+                </article>
+                <article class="network-panel">
+                    <span class="network-number">03 / Identidad</span>
+                    <h3>La identidad forma parte del perímetro</h3>
+                    <p>Usuario, dispositivo, sesión y contexto deben verificarse. La ubicación de origen por sí sola no es suficiente para conceder confianza.</p>
+                </article>
+                <article class="network-panel">
+                    <span class="network-number">04 / Superficie híbrida</span>
+                    <h3>Un entorno, múltiples ubicaciones</h3>
+                    <p>Cloud, teletrabajo, terceros, APIs e IoT/OT amplían la superficie que debe inventariarse, protegerse y monitorizarse.</p>
+                </article>
+                <article class="network-panel">
+                    <span class="network-number">05 / Respuesta</span>
+                    <h3>Detectar y actuar con contexto</h3>
+                    <p>La telemetría de red, DNS, identidad y endpoint permite priorizar alertas y coordinar una contención proporcionada.</p>
+                </article>
+                <article class="network-panel">
+                    <span class="network-number">06 / Gobierno</span>
+                    <h3>Controles que se pueden demostrar</h3>
+                    <p>Las revisiones y pruebas periódicas convierten las políticas de seguridad en evidencias medibles y oportunidades de mejora.</p>
+                </article>
+            </div>
+            <div class="network-callout">
+                Objetivo: reducir el tiempo de permanencia de una amenaza y limitar el impacto de cualquier compromiso mediante controles verificables.
+            </div>
+        </div>
+    </section>
+
+    <section class="specialties">
+        <div class="container">
+            <div class="section-heading">
+                <span class="eyebrow">Arquitectura de confianza</span>
+                <h2>Defensa por capas. Visibilidad transversal.</h2>
+                <p>Cada capa verifica, limita y registra. La detección y la respuesta conectan los distintos niveles de la arquitectura.</p>
+            </div>
+            <div class="network-flow">
+                <div><b>01 · Identidad</b><span>IdP, MFA resistente al phishing, postura del dispositivo</span></div>
+                <div><b>02 · Acceso</b><span>ZTNA, NAC, SASE/SSE y acceso privilegiado</span></div>
+                <div><b>03 · Segmentación</b><span>Zonas, conductos y microsegmentación</span></div>
+                <div><b>04 · Transporte</b><span>TLS 1.3, mTLS, IPsec y cripto-agilidad</span></div>
+                <div><b>05 · Respuesta</b><span>NDR, SIEM, XDR, SOAR y threat hunting</span></div>
+            </div>
+            <div class="network-grid">
+                <article class="network-panel">
+                    <h3>Verificar explícitamente</h3>
+                    <p>Evaluar identidad, dispositivo y contexto en cada sesión y para cada recurso.</p>
+                </article>
+                <article class="network-panel">
+                    <h3>Mínimo privilegio</h3>
+                    <p>Conceder únicamente el acceso necesario, durante el tiempo necesario y con trazabilidad.</p>
+                </article>
+                <article class="network-panel">
+                    <h3>Asumir que puede haber una brecha</h3>
+                    <p>Segmentar, medir y preparar mecanismos de contención para que un incidente no se extienda libremente.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="section-heading">
+                <span class="eyebrow">Control de acceso</span>
+                <h2>Zero Trust y microsegmentación.</h2>
+                <p>El acceso se concede a recursos concretos y según políticas; no se confía automáticamente en una conexión por estar dentro de una red corporativa.</p>
+            </div>
+            <div class="network-grid">
+                <article class="network-panel">
+                    <span class="network-number">Zero Trust</span>
+                    <h3>Acceso por identidad y contexto</h3>
+                    <ul>
+                        <li>ZTNA para acceder a aplicaciones concretas.</li>
+                        <li>NAC con 802.1X y evaluación de postura.</li>
+                        <li>MFA resistente al phishing, FIDO2 y passkeys.</li>
+                        <li>Acceso privilegiado just-in-time y con caducidad.</li>
+                        <li>Sesiones de terceros acotadas y auditables.</li>
+                    </ul>
+                </article>
+                <article class="network-panel">
+                    <span class="network-number">Microsegmentación</span>
+                    <h3>Reducir el radio de impacto</h3>
+                    <ul>
+                        <li>Descubrimiento de flujos y dependencias.</li>
+                        <li>Etiquetado por rol, entorno y criticidad.</li>
+                        <li>Simulación de políticas antes de aplicarlas.</li>
+                        <li>Despliegue gradual sobre activos prioritarios.</li>
+                        <li>Revisión de excepciones y detección de desviaciones.</li>
+                    </ul>
+                </article>
+                <article class="network-panel">
+                    <span class="network-number">SASE / SSE</span>
+                    <h3>Acceso seguro desde cualquier lugar</h3>
+                    <ul>
+                        <li>SWG para navegación y control web.</li>
+                        <li>CASB para visibilidad y control de SaaS.</li>
+                        <li>DNS seguro para bloquear dominios maliciosos.</li>
+                        <li>DLP de red para ayudar a detectar fugas.</li>
+                        <li>SD-WAN seguro para conectar sedes.</li>
+                    </ul>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="specialties">
+        <div class="container">
+            <div class="section-heading">
+                <span class="eyebrow">Detección y respuesta</span>
+                <h2>Ver lo que ocurre. Entenderlo. Responder.</h2>
+                <p>La detección moderna combina telemetría, analítica y contexto para identificar comportamientos anómalos, incluso cuando parte del tráfico está cifrado.</p>
+            </div>
+            <div class="network-grid">
+                <article class="network-panel">
+                    <h3>NDR · Network Detection & Response</h3>
+                    <p>Analítica de flujos, DNS, TLS y comportamiento para descubrir patrones fuera de lo habitual y aportar contexto a la investigación.</p>
+                    <ul>
+                        <li>Huellas TLS como JA3/JA4 cuando proceda.</li>
+                        <li>Detección de patrones de comunicación anómalos.</li>
+                        <li>Visibilidad de tráfico este-oeste.</li>
+                        <li>Integración de alertas con SIEM y XDR.</li>
+                    </ul>
+                </article>
+                <article class="network-panel">
+                    <h3>DNS seguro</h3>
+                    <p>El DNS es una fuente relevante de visibilidad y control temprano sobre dominios y consultas inusuales.</p>
+                    <ul>
+                        <li>Protective DNS e inteligencia de amenazas.</li>
+                        <li>DNSSEC en zonas propias y validación.</li>
+                        <li>Registro y análisis de consultas.</li>
+                        <li>Detección de patrones compatibles con túneles o dominios generados.</li>
+                    </ul>
+                </article>
+                <article class="network-panel">
+                    <h3>Threat hunting y deception</h3>
+                    <p>Búsqueda proactiva de señales y uso controlado de señuelos defensivos para generar alertas de alta fidelidad.</p>
+                    <ul>
+                        <li>Hipótesis basadas en inteligencia y MITRE ATT&CK.</li>
+                        <li>Correlación de red, DNS, identidad y endpoint.</li>
+                        <li>Honeytokens y canary tokens en entornos autorizados.</li>
+                        <li>Hallazgos convertidos en nuevas detecciones.</li>
+                    </ul>
+                </article>
+            </div>
+            <div class="network-callout">
+                La automatización de respuestas —por ejemplo, aislar un activo o revocar una sesión— debe definirse mediante procedimientos aprobados, pruebas previas y criterios claros de escalado.
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="section-heading">
+                <span class="eyebrow">Infraestructura resiliente</span>
+                <h2>Protección para redes físicas, cloud e industriales.</h2>
+                <p>Los controles se adaptan a la criticidad, tecnología y necesidades operativas de cada entorno.</p>
+            </div>
+            <div class="network-grid">
+                <article class="network-panel">
+                    <h3>Cifrado y preparación post-cuántica</h3>
+                    <ul>
+                        <li>TLS 1.3 y mTLS entre servicios.</li>
+                        <li>IPsec/IKEv2 y MACsec en enlaces adecuados.</li>
+                        <li>Inventario criptográfico y gestión de certificados.</li>
+                        <li>Evaluación de cripto-agilidad y hoja de ruta post-cuántica.</li>
+                    </ul>
+                </article>
+                <article class="network-panel">
+                    <h3>Redes L2 / L3 y Wi-Fi</h3>
+                    <ul>
+                        <li>Revisión de segmentación y configuración de switching.</li>
+                        <li>Controles de enrutamiento y protección del plano de gestión.</li>
+                        <li>WPA3-Enterprise y autenticación basada en certificados.</li>
+                        <li>Separación de redes corporativas, invitados e IoT.</li>
+                    </ul>
+                </article>
+                <article class="network-panel">
+                    <h3>OT e IoT</h3>
+                    <ul>
+                        <li>Descubrimiento pasivo de activos.</li>
+                        <li>Zonas y conductos según el contexto industrial.</li>
+                        <li>Acceso remoto de proveedores controlado.</li>
+                        <li>Monitorización que tenga en cuenta la continuidad operativa.</li>
+                    </ul>
+                </article>
+                <article class="network-panel">
+                    <h3>Cloud e infraestructura híbrida</h3>
+                    <ul>
+                        <li>Segmentación de VPC/VNet por entorno y criticidad.</li>
+                        <li>Acceso privado y control del tráfico de salida.</li>
+                        <li>Registros de flujo y DNS centralizados.</li>
+                        <li>Revisión de IaC, exposición y configuración.</li>
+                    </ul>
+                </article>
+                <article class="network-panel">
+                    <h3>Validación continua</h3>
+                    <ul>
+                        <li>Revisión de controles y configuraciones.</li>
+                        <li>Ejercicios BAS y purple teaming según alcance.</li>
+                        <li>Pruebas de red autorizadas y planificadas.</li>
+                        <li>Seguimiento de mejoras y cobertura de detección.</li>
+                    </ul>
+                </article>
+                <article class="network-panel">
+                    <h3>Gobierno y cumplimiento</h3>
+                    <ul>
+                        <li>Mapeo de controles a NIS2, DORA y ENS cuando aplique.</li>
+                        <li>Referencias a RGPD e ISO/IEC 27001.</li>
+                        <li>IEC 62443 para entornos industriales pertinentes.</li>
+                        <li>Evidencias y responsabilidades documentadas.</li>
+                    </ul>
+                </article>
+            </div>
+            <div class="network-callout">
+                La aplicabilidad normativa y el alcance de cada control deben confirmarse para cada organización. La página describe capacidades y líneas de trabajo, no una certificación ni una garantía automática de cumplimiento.
+            </div>
+        </div>
+    </section>
+
+    <section class="specialties" id="red-servicios">
+        <div class="container">
+            <div class="section-heading">
+                <span class="eyebrow">Nuestra oferta</span>
+                <h2>Seis líneas de servicio. Un objetivo: reducir el riesgo.</h2>
+                <p>Los servicios pueden contratarse de forma independiente o integrarse en un programa adaptado al tamaño y madurez de la organización.</p>
+            </div>
+            <div class="network-grid">
+                <article class="network-panel">
+                    <span class="network-number">01</span>
+                    <h3>Evaluación y hoja de ruta</h3>
+                    <p>Revisión de arquitectura, inventario de flujos y análisis de brechas frente a prácticas de seguridad de red.</p>
+                </article>
+                <article class="network-panel">
+                    <span class="network-number">02</span>
+                    <h3>Zero Trust y microsegmentación</h3>
+                    <p>Diseño por fases de ZTNA, NAC y políticas de segmentación para activos prioritarios.</p>
+                </article>
+                <article class="network-panel">
+                    <span class="network-number">03</span>
+                    <h3>Detección y respuesta de red</h3>
+                    <p>Diseño o mejora de NDR, integración de fuentes, ajuste de alertas y procedimientos de respuesta. La cobertura 24x7 se define según el servicio contratado.</p>
+                </article>
+                <article class="network-panel">
+                    <span class="network-number">04</span>
+                    <h3>DNS y acceso seguro</h3>
+                    <p>Protective DNS, controles de navegación y acceso remoto moderno para usuarios y terceros.</p>
+                </article>
+                <article class="network-panel">
+                    <span class="network-number">05</span>
+                    <h3>Preparación post-cuántica</h3>
+                    <p>Inventario criptográfico, evaluación de cripto-agilidad y planificación de pilotos y migraciones progresivas.</p>
+                </article>
+                <article class="network-panel">
+                    <span class="network-number">06</span>
+                    <h3>Validación continua</h3>
+                    <p>Revisión de controles, ejercicios coordinados y pruebas autorizadas con resultados y acciones de mejora.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="section-heading">
+                <span class="eyebrow">Metodología</span>
+                <h2>Un proceso por fases, con entregables claros.</h2>
+                <p>Los plazos son orientativos y se ajustan al tamaño, la complejidad y la madurez de la infraestructura.</p>
+            </div>
+            <div class="network-flow">
+                <div><b>01 · Descubrir</b><span>Inventario, flujos y análisis inicial</span></div>
+                <div><b>02 · Diseñar</b><span>Arquitectura objetivo y prioridades</span></div>
+                <div><b>03 · Implantar</b><span>Políticas, sensores y despliegue gradual</span></div>
+                <div><b>04 · Operar</b><span>Monitorización, informes y escalado</span></div>
+                <div><b>05 · Mejorar</b><span>Validación y revisión del roadmap</span></div>
+            </div>
+            <table class="network-table">
+                <thead><tr><th>Modelo</th><th>Enfoque</th><th>Incluye</th></tr></thead>
+                <tbody>
+                    <tr><td>Essential</td><td>Visibilidad</td><td>Evaluación de arquitectura, hoja de ruta, Protective DNS y revisión periódica de riesgos.</td></tr>
+                    <tr><td>Advanced</td><td>Detección y contención</td><td>Alcance Essential más capacidades NDR, microsegmentación priorizada y threat hunting, según contrato.</td></tr>
+                    <tr><td>Strategic</td><td>Resiliencia integral</td><td>Alcance Advanced más evolución Zero Trust, preparación post-cuántica y validación avanzada.</td></tr>
+                </tbody>
+            </table>
+            <p style="color:var(--muted);font-size:12px;margin-top:15px">
+                El precio, los horarios de cobertura, los SLA, las herramientas y los entregables se concretan tras conocer el entorno y acordar el alcance.
+            </p>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="network-cta">
+                <span class="eyebrow">Siguiente paso</span>
+                <h2>Empecemos por entender tu red.</h2>
+                <p>
+                    Una primera conversación permite conocer la infraestructura, las prioridades
+                    y el nivel de protección necesario. A partir de ahí se puede plantear una
+                    evaluación acotada y una hoja de ruta realista.
+                </p>
+                <div class="buttons">
+                    <a href="#contacto" class="btn btn-primary">Hablar sobre mi infraestructura</a>
+                    <a href="mailto:ericverdugomz@gmail.com?subject=Evaluaci%C3%B3n%20de%20ciberseguridad%20de%20red" class="btn btn-outline">Escribir por correo</a>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+
+<!-- ================= DBA CON IA ================= -->
+
+<div class="page" id="dba-ia">
+
+    <div class="page-header">
+        <div class="container">
+            <span class="eyebrow">Database Administration · Artificial Intelligence</span>
+            <h1>Tus datos, <span class="gradient-text">bajo control.</span></h1>
+            <p>
+                Administración de bases de datos potenciada con inteligencia artificial:
+                más visibilidad, mejor rendimiento y una gestión más segura para tu empresa.
+            </p>
+            <div class="buttons" style="margin-top:28px">
+                <a href="#contacto" class="btn btn-primary">Solicitar una primera llamada</a>
+                <a href="#dba-servicios" class="btn btn-outline">Ver qué incluye</a>
+            </div>
+        </div>
+    </div>
+
+    <section>
+        <div class="container">
+            <div class="section-heading">
+                <span class="eyebrow">Por qué importa</span>
+                <h2>Tu negocio depende de sus bases de datos.</h2>
+                <p>
+                    Ventas, facturación, clientes, aplicaciones e informes dependen de que
+                    la información esté disponible, organizada y protegida. Cuando una
+                    base de datos se vuelve lenta o falla, el impacto llega a todo el negocio.
+                </p>
+            </div>
+
+            <div class="cards">
+                <article class="card">
+                    <div class="card-icon">◷</div>
+                    <h3>Lentitud que cuesta tiempo</h3>
+                    <p>Consultas e informes pesados pueden ralentizar aplicaciones y dificultar el trabajo diario.</p>
+                </article>
+                <article class="card">
+                    <div class="card-icon">◇</div>
+                    <h3>Copias sin verificar</h3>
+                    <p>Una copia de seguridad solo aporta confianza cuando existe un proceso de restauración probado.</p>
+                </article>
+                <article class="card">
+                    <div class="card-icon">⌁</div>
+                    <h3>Costes y recursos</h3>
+                    <p>Una configuración poco ajustada puede provocar consumo innecesario de almacenamiento, recursos o servicios cloud.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="specialties">
+        <div class="container">
+            <div class="section-heading">
+                <span class="eyebrow">DBA aumentado con IA</span>
+                <h2>La IA ayuda. El criterio técnico decide.</h2>
+                <p>
+                    Utilizo herramientas de inteligencia artificial como apoyo para analizar
+                    información técnica, detectar patrones, acelerar tareas y preparar
+                    recomendaciones. Las decisiones y los cambios importantes se revisan
+                    antes de aplicarse.
+                </p>
+            </div>
+
+            <div class="specialty-list">
+                <div class="specialty">Análisis asistido de consultas lentas y planes de ejecución.</div>
+                <div class="specialty">Detección de patrones anómalos en métricas y registros disponibles.</div>
+                <div class="specialty">Documentación técnica y catálogo de datos más fáciles de mantener.</div>
+                <div class="specialty">Consultas e informes en lenguaje natural, cuando el entorno lo permite.</div>
+                <div class="specialty">Apoyo en migraciones y modernización de motores de bases de datos.</div>
+                <div class="specialty">Preparación de datos para futuros proyectos de IA y asistentes internos.</div>
+            </div>
+
+            <div class="notice">
+                La IA no sustituye la supervisión profesional. No se ejecutarán cambios
+                automáticamente en producción: cada actuación se define con el cliente,
+                se valida y se documenta. El uso de servicios externos y el tratamiento
+                de datos requieren autorización previa.
+            </div>
+        </div>
+    </section>
+
+    <section id="dba-servicios">
+        <div class="container">
+            <div class="section-heading">
+                <span class="eyebrow">Servicios</span>
+                <h2>Todo el ciclo de vida de tus datos.</h2>
+                <p>
+                    El alcance se adapta al tamaño de la empresa, al motor utilizado y
+                    al estado real de la infraestructura.
+                </p>
+            </div>
+
+            <div class="cards">
+                <article class="card">
+                    <div class="card-icon">⌕</div>
+                    <h3>Auditoría y diagnóstico</h3>
+                    <p>Revisión del estado, rendimiento, configuración, accesos, copias y posibles riesgos. Entrega de un plan de acción priorizado.</p>
+                </article>
+                <article class="card">
+                    <div class="card-icon">↗</div>
+                    <h3>Rendimiento y optimización</h3>
+                    <p>Análisis de consultas, índices, configuración del motor y uso de recursos para identificar mejoras medibles.</p>
+                </article>
+                <article class="card">
+                    <div class="card-icon">◈</div>
+                    <h3>Seguridad y permisos</h3>
+                    <p>Revisión de usuarios, privilegios, accesos, trazabilidad y medidas de protección adecuadas al entorno.</p>
+                </article>
+                <article class="card">
+                    <div class="card-icon">⟲</div>
+                    <h3>Copias y recuperación</h3>
+                    <p>Revisión de la estrategia de backup y planificación de pruebas de restauración, con objetivos de recuperación documentados.</p>
+                </article>
+                <article class="card">
+                    <div class="card-icon">⇄</div>
+                    <h3>Nube y migraciones</h3>
+                    <p>Estudio y apoyo en migraciones entre motores o plataformas cloud, con pruebas y planificación del cambio.</p>
+                </article>
+                <article class="card">
+                    <div class="card-icon">✧</div>
+                    <h3>Automatización e IA</h3>
+                    <p>Informes, documentación y tareas de análisis asistidas por IA, siempre dentro del alcance y los permisos acordados.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="specialties">
+        <div class="container">
+            <div class="section-heading">
+                <span class="eyebrow">Tecnologías</span>
+                <h2>Trabajamos sobre el entorno que ya utilizas.</h2>
+                <p>
+                    La tecnología concreta se selecciona según tu infraestructura.
+                    No es necesario cambiar de motor si no existe una razón técnica o de negocio.
+                </p>
+            </div>
+            <div class="specialty-list">
+                <div class="specialty">PostgreSQL · MySQL · MariaDB</div>
+                <div class="specialty">Microsoft SQL Server · Oracle</div>
+                <div class="specialty">MongoDB · Redis</div>
+                <div class="specialty">Linux · Windows Server · Python · Bash · PowerShell</div>
+                <div class="specialty">AWS RDS / Aurora · Azure SQL · Google Cloud SQL</div>
+                <div class="specialty">Herramientas de monitorización, automatización y análisis asistido por IA</div>
+            </div>
+            <p style="color:var(--muted);font-size:12px;margin-top:18px">
+                La experiencia y disponibilidad de cada tecnología se concretarán en la propuesta técnica del proyecto.
+            </p>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="section-heading">
+                <span class="eyebrow">Metodología</span>
+                <h2>Un proceso claro, por fases.</h2>
+                <p>Primero entendemos el entorno. Después priorizamos y ejecutamos únicamente las mejoras acordadas.</p>
+            </div>
+            <div class="cards">
+                <article class="card">
+                    <h3>01. Auditoría</h3>
+                    <p>Inventario, revisión del estado actual, identificación de riesgos y oportunidades de mejora.</p>
+                    <span class="tag">Alcance inicial</span>
+                </article>
+                <article class="card">
+                    <h3>02. Estabilización</h3>
+                    <p>Prioridad a copias, accesos, seguridad básica, alertas y documentación esencial.</p>
+                    <span class="tag">Base fiable</span>
+                </article>
+                <article class="card">
+                    <h3>03. Optimización</h3>
+                    <p>Ajustes de rendimiento y recursos, con pruebas y comparación de resultados cuando sea posible.</p>
+                    <span class="tag">Mejora medible</span>
+                </article>
+                <article class="card">
+                    <h3>04. Evolución</h3>
+                    <p>Seguimiento, automatización y nuevos casos de uso de IA según las necesidades del negocio.</p>
+                    <span class="tag">Continuidad opcional</span>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="specialties">
+        <div class="container">
+            <div class="section-heading">
+                <span class="eyebrow">Modalidades de colaboración</span>
+                <h2>Empieza por lo que necesitas.</h2>
+                <p>
+                    Tres formas orientativas de trabajar. El alcance, los plazos y el precio
+                    se definirán por escrito después de conocer el entorno.
+                </p>
+            </div>
+            <div class="cards">
+                <article class="card">
+                    <h3>Auditoría Express</h3>
+                    <p>Para conocer el estado de tus bases de datos y saber qué conviene mejorar primero.</p>
+                    <ul>
+                        <li>Informe ejecutivo y anexo técnico.</li>
+                        <li>Lista priorizada de mejoras.</li>
+                        <li>Revisión de accesos y copias.</li>
+                        <li>Prueba de restauración, si el entorno y los permisos lo permiten.</li>
+                    </ul>
+                    <span class="tag">Proyecto puntual</span>
+                </article>
+                <article class="card" style="border-color:rgba(73,225,230,.5)">
+                    <div class="eyebrow">Servicio recurrente</div>
+                    <h3>DBA Gestionado</h3>
+                    <p>Apoyo continuado para empresas que necesitan un especialista sin incorporarlo a tiempo completo.</p>
+                    <ul>
+                        <li>Revisiones y seguimiento acordados.</li>
+                        <li>Mantenimiento y planificación de copias.</li>
+                        <li>Optimización periódica.</li>
+                        <li>Informes y soporte según SLA pactado.</li>
+                    </ul>
+                    <span class="tag">Cuota mensual a medida</span>
+                </article>
+                <article class="card">
+                    <h3>Transformación con IA</h3>
+                    <p>Para modernizar el entorno y estudiar nuevos usos de los datos.</p>
+                    <ul>
+                        <li>Migración o modernización.</li>
+                        <li>Consultas de datos en lenguaje natural.</li>
+                        <li>Documentación y catálogo automatizados.</li>
+                        <li>Formación y transferencia de conocimiento.</li>
+                    </ul>
+                    <span class="tag">Proyecto a medida</span>
+                </article>
+            </div>
+            <div class="notice">
+                No se publican tarifas cerradas porque dependen del número de bases de datos,
+                volumen, criticidad, tecnología, horarios y nivel de servicio solicitado.
+                Recibirás una propuesta con alcance, exclusiones, plazos y precio antes de empezar.
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="section-heading">
+                <span class="eyebrow">Confianza y control</span>
+                <h2>Reglas claras para trabajar con tus datos.</h2>
+            </div>
+            <div class="specialty-list">
+                <div class="specialty">Tus datos siguen siendo tuyos y su tratamiento se acuerda previamente.</div>
+                <div class="specialty">Accesos limitados a lo imprescindible y autorizados por el cliente.</div>
+                <div class="specialty">Ningún cambio en producción sin revisión, aprobación y pruebas acordadas.</div>
+                <div class="specialty">Registro y documentación de las actuaciones realizadas.</div>
+                <div class="specialty">Uso de IA externa solo con autorización y garantías adecuadas.</div>
+                <div class="specialty">Confidencialidad y medidas de protección definidas para cada proyecto.</div>
+            </div>
+
+            <h2 style="margin-top:55px">Preguntas frecuentes</h2>
+            <div class="detail-content">
+                <h3>¿Tengo que cambiar de base de datos?</h3>
+                <p>No necesariamente. El punto de partida es analizar el motor que ya utilizas y valorar mejoras sobre él.</p>
+
+                <h3>¿Es seguro utilizar IA con información de mi empresa?</h3>
+                <p>Depende de la herramienta, los datos y la configuración. Antes de utilizar cualquier servicio se define qué información puede tratarse y bajo qué condiciones. No se envían datos a servicios externos sin autorización.</p>
+
+                <h3>¿La IA realizará cambios automáticamente?</h3>
+                <p>No. La IA puede ayudar a analizar y proponer, pero las modificaciones se revisan y se prueban antes de cualquier aplicación en producción.</p>
+
+                <h3>¿Y si ya tengo equipo informático?</h3>
+                <p>El servicio puede plantearse como apoyo especializado, segunda opinión o colaboración en tareas concretas, coordinándose con el equipo existente.</p>
+
+                <h3>¿Es solo para empresas grandes?</h3>
+                <p>No. La auditoría puntual permite empezar con un alcance limitado y decidir después si tiene sentido una colaboración recurrente.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="specialties">
+        <div class="container">
+            <div class="highlight">
+                <span class="eyebrow">Primer paso</span>
+                <h2>Hablemos de tus datos.</h2>
+                <p>
+                    Podemos empezar con una conversación inicial para conocer tu sistema,
+                    tus necesidades y los problemas que quieres resolver. Después recibirás
+                    una propuesta con alcance, plazos y precio por escrito, sin compromiso
+                    de continuar.
+                </p>
+                <a href="mailto:ericverdugomz@gmail.com?subject=Consulta%20sobre%20DBA%20con%20IA" class="btn btn-primary">
+                    Solicitar información sobre DBA con IA
+                </a>
+            </div>
+        </div>
+    </section>
+</div>
+
+
+<!-- ================= PROYECTOS ================= -->
+
+<div class="page" id="proyectos">
+
+    <div class="page-header">
+        <div class="container">
+            <span class="eyebrow">Portfolio</span>
+            <h1>Proyectos <span class="gradient-text">tecnológicos</span></h1>
+            <p>
+                Una selección de proyectos demostrativos que representan
+                diferentes soluciones de infraestructura, sistemas,
+                administración y desarrollo tecnológico.
+            </p>
+        </div>
+    </div>
+
+    <section>
+        <div class="container">
+            <div class="section-heading">
+                <h2>De la planificación a la implementación.</h2>
+                <p>
+                    Cada proyecto permite mostrar cómo abordamos un problema
+                    técnico, qué tecnologías podemos utilizar y qué resultado
+                    buscamos conseguir.
+                </p>
+            </div>
+
+            <div class="cards">
+
+                <article class="card">
+                    <div class="card-icon">◈</div>
+                    <h3>Infraestructura de red segura</h3>
+                    <p>
+                        Diseño de una infraestructura de red empresarial
+                        con firewall, segmentación y políticas de acceso.
+                    </p>
+                    <div class="project-meta">
+                        <span class="tag">Redes</span>
+                        <span class="tag">Firewall</span>
+                    </div>
+                    <a class="card-link" href="#proyecto-infraestructura">Ver proyecto completo →</a>
+                </article>
+
+                <article class="card">
+                    <div class="card-icon">⌘</div>
+                    <h3>Administración de servidores Linux</h3>
+                    <p>
+                        Preparación de un servidor Linux con servicios
+                        configurados y medidas básicas de protección.
+                    </p>
+                    <div class="project-meta">
+                        <span class="tag">Linux</span>
+                        <span class="tag">Servidores</span>
+                    </div>
+                    <a class="card-link" href="#proyecto-servidores">Ver proyecto completo →</a>
+                </article>
+
+                <article class="card">
+                    <div class="card-icon">▣</div>
+                    <h3>Despliegue de aplicación web</h3>
+                    <p>
+                        Diseño y puesta en marcha de una aplicación web
+                        conectada a una base de datos.
+                    </p>
+                    <div class="project-meta">
+                        <span class="tag">Web</span>
+                        <span class="tag">Desarrollo</span>
+                    </div>
+                    <a class="card-link" href="#proyecto-web">Ver proyecto completo →</a>
+                </article>
+
+                <article class="card">
+                    <div class="card-icon">▤</div>
+                    <h3>Gestión de bases de datos</h3>
+                    <p>
+                        Diseño de una estructura de datos organizada
+                        para almacenar y consultar información.
+                    </p>
+                    <div class="project-meta">
+                        <span class="tag">SQL</span>
+                        <span class="tag">Bases de datos</span>
+                    </div>
+                    <a class="card-link" href="#proyecto-datos">Ver proyecto completo →</a>
+                </article>
+
+                <article class="card">
+                    <div class="card-icon">⌁</div>
+                    <h3>Automatización con Python</h3>
+                    <p>
+                        Desarrollo de scripts para automatizar tareas
+                        administrativas y facilitar procesos repetitivos.
+                    </p>
+                    <div class="project-meta">
+                        <span class="tag">Python</span>
+                        <span class="tag">Automatización</span>
+                    </div>
+                    <a class="card-link" href="#proyecto-automatizacion">Ver proyecto completo →</a>
+                </article>
+
+            </div>
+
+            <div class="notice">
+                Los proyectos mostrados son propuestas de portfolio y
+                demostraciones técnicas. No se presentan como trabajos
+                realizados para clientes ni como instalaciones comerciales
+                ya ejecutadas.
+            </div>
+        </div>
+    </section>
+</div>
+
+
+<!-- ================= PROYECTO 1 ================= -->
+
+<div class="page" id="proyecto-infraestructura">
+    <div class="page-header">
+        <div class="container">
+            <span class="eyebrow">Project 01 · Network Security</span>
+            <h1>Infraestructura de <span class="gradient-text">red segura</span></h1>
+            <p>
+                Diseño conceptual de una red empresarial organizada,
+                segmentada y protegida mediante un firewall.
+            </p>
+        </div>
+    </div>
+
+    <section>
+        <div class="container detail-content">
+            <a href="#proyectos" class="back-link">← Volver a proyectos</a>
+
+            <div class="project-meta">
+                <span class="tag">Redes</span>
+                <span class="tag">Firewalls</span>
+                <span class="tag">Seguridad</span>
+            </div>
+
+            <h2>El objetivo del proyecto</h2>
+            <p>
+                Diseñar una infraestructura de red para una pequeña empresa
+                que necesita conectar diferentes dispositivos y servicios
+                manteniendo una organización adecuada y un mayor control
+                sobre las comunicaciones.
+            </p>
+
+            <h2>El problema que queremos resolver</h2>
+            <p>
+                En muchas pequeñas empresas, los equipos informáticos,
+                servidores y dispositivos de invitados comparten una
+                infraestructura poco organizada. Esto puede dificultar
+                la administración y aumentar los riesgos derivados
+                de configuraciones inadecuadas.
+            </p>
+
+            <h2>La solución propuesta</h2>
+            <ul>
+                <li>Diseño de la topología de red.</li>
+                <li>Planificación de diferentes segmentos de red.</li>
+                <li>Implementación de un firewall en un entorno de laboratorio.</li>
+                <li>Definición de políticas de comunicación entre segmentos.</li>
+                <li>Revisión de los servicios y accesos necesarios.</li>
+                <li>Documentación de la infraestructura.</li>
+            </ul>
+
+            <h2>Tecnologías contempladas</h2>
+            <p>
+                Para desarrollar el laboratorio se pueden utilizar
+                herramientas como pfSense o OPNsense, máquinas virtuales,
+                sistemas Linux y herramientas de administración de redes.
+            </p>
+
+            <h2>Resultado esperado</h2>
+            <p>
+                Una infraestructura documentada, organizada y con reglas
+                de comunicación definidas, que permita comprender cómo
+                mejorar la seguridad de una pequeña red empresarial.
+            </p>
+
+            <div class="notice">
+                Proyecto demostrativo para laboratorio. Las configuraciones
+                definitivas dependerán de las necesidades, equipos y
+                autorización del cliente.
+            </div>
+        </div>
+    </section>
+</div>
+
+
+<!-- ================= PROYECTO 2 ================= -->
+
+<div class="page" id="proyecto-servidores">
+    <div class="page-header">
+        <div class="container">
+            <span class="eyebrow">Project 02 · System Administration</span>
+            <h1>Administración de <span class="gradient-text">servidores Linux</span></h1>
+            <p>
+                Preparación de un entorno de servidor estable,
+                organizado y preparado para alojar servicios.
+            </p>
+        </div>
+    </div>
+
+    <section>
+        <div class="container detail-content">
+            <a href="#proyectos" class="back-link">← Volver a proyectos</a>
+
+            <div class="project-meta">
+                <span class="tag">Linux</span>
+                <span class="tag">Servidores</span>
+                <span class="tag">Administración</span>
+            </div>
+
+            <h2>El objetivo del proyecto</h2>
+            <p>
+                Crear un entorno de servidor Linux que permita alojar
+                servicios y administrar recursos informáticos de forma
+                centralizada.
+            </p>
+
+            <h2>¿Qué incluye?</h2>
+            <ul>
+                <li>Instalación y configuración inicial de Linux.</li>
+                <li>Creación y administración de usuarios.</li>
+                <li>Configuración de servicios necesarios.</li>
+                <li>Actualización y mantenimiento del sistema.</li>
+                <li>Configuración de accesos administrativos.</li>
+                <li>Revisión de registros y estado del servidor.</li>
+                <li>Documentación técnica del entorno.</li>
+            </ul>
+
+            <h2>Contenedores con Docker</h2>
+            <p>
+                Como ampliación, se puede incorporar Docker para desplegar
+                aplicaciones y servicios en contenedores independientes.
+                Esto facilita la organización de los entornos y permite
+                administrar diferentes aplicaciones de manera más ordenada.
+            </p>
+
+            <h2>Resultado esperado</h2>
+            <p>
+                Un servidor de laboratorio correctamente documentado,
+                con servicios funcionales y una configuración adaptada
+                a las necesidades planteadas.
+            </p>
+        </div>
+    </section>
+</div>
+
+
+<!-- ================= PROYECTO 3 ================= -->
+
+<div class="page" id="proyecto-web">
+    <div class="page-header">
+        <div class="container">
+            <span class="eyebrow">Project 03 · Web Development</span>
+            <h1>Despliegue de <span class="gradient-text">aplicación web</span></h1>
+            <p>
+                Diseño y despliegue de una solución web conectada
+                a una infraestructura de datos.
+            </p>
+        </div>
+    </div>
+
+    <section>
+        <div class="container detail-content">
+            <a href="#proyectos" class="back-link">← Volver a proyectos</a>
+
+            <div class="project-meta">
+                <span class="tag">HTML</span>
+                <span class="tag">CSS</span>
+                <span class="tag">JavaScript</span>
+            </div>
+
+            <h2>El objetivo del proyecto</h2>
+            <p>
+                Desarrollar una aplicación web funcional, con una interfaz
+                moderna y una estructura preparada para gestionar información.
+            </p>
+
+            <h2>Funcionalidades propuestas</h2>
+            <ul>
+                <li>Diseño responsive para móviles y ordenadores.</li>
+                <li>Interfaz de usuario intuitiva.</li>
+                <li>Organización de contenidos.</li>
+                <li>Conexión con una base de datos.</li>
+                <li>Gestión de formularios y datos.</li>
+                <li>Despliegue en un entorno de servidor.</li>
+            </ul>
+
+            <h2>Enfoque tecnológico</h2>
+            <p>
+                El proyecto puede desarrollarse utilizando HTML, CSS
+                y JavaScript en el frontend, junto con una tecnología
+                de backend y una base de datos adecuada al alcance
+                de la aplicación.
+            </p>
+
+            <h2>Resultado esperado</h2>
+            <p>
+                Una aplicación web demostrativa que muestre las capacidades
+                de diseño, desarrollo, integración y despliegue de servicios web.
+            </p>
+        </div>
+    </section>
+</div>
+
+
+<!-- ================= PROYECTO 4 ================= -->
+
+<div class="page" id="proyecto-datos">
+    <div class="page-header">
+        <div class="container">
+            <span class="eyebrow">Project 04 · Database Management</span>
+            <h1>Gestión de <span class="gradient-text">bases de datos</span></h1>
+            <p>
+                Organización, almacenamiento y administración
+                de información mediante sistemas de bases de datos.
+            </p>
+        </div>
+    </div>
+
+    <section>
+        <div class="container detail-content">
+            <a href="#proyectos" class="back-link">← Volver a proyectos</a>
+
+            <div class="project-meta">
+                <span class="tag">SQL</span>
+                <span class="tag">MySQL</span>
+                <span class="tag">Administración</span>
+            </div>
+
+            <h2>El objetivo del proyecto</h2>
+            <p>
+                Diseñar una base de datos para una pequeña empresa que
+                necesita almacenar información de clientes, productos
+                y operaciones de forma estructurada.
+            </p>
+
+            <h2>Desarrollo del proyecto</h2>
+            <ul>
+                <li>Análisis de la información que se necesita almacenar.</li>
+                <li>Diseño de tablas y relaciones.</li>
+                <li>Definición de claves primarias y foráneas.</li>
+                <li>Creación de consultas SQL.</li>
+                <li>Organización de permisos de acceso.</li>
+                <li>Planificación de copias de seguridad.</li>
+                <li>Documentación de la estructura de datos.</li>
+            </ul>
+
+            <h2>Resultado esperado</h2>
+            <p>
+                Una base de datos estructurada que permita gestionar
+                información de forma coherente y facilitar su consulta
+                y mantenimiento.
+            </p>
+        </div>
+    </section>
+</div>
+
+
+<!-- ================= PROYECTO 5 ================= -->
+
+<div class="page" id="proyecto-automatizacion">
+    <div class="page-header">
+        <div class="container">
+            <span class="eyebrow">Project 05 · Python Automation</span>
+            <h1>Automatización con <span class="gradient-text">Python</span></h1>
+            <p>
+                Desarrollo de herramientas para simplificar tareas
+                administrativas y optimizar procesos técnicos.
+            </p>
+        </div>
+    </div>
+
+    <section>
+        <div class="container detail-content">
+            <a href="#proyectos" class="back-link">← Volver a proyectos</a>
+
+            <div class="project-meta">
+                <span class="tag">Python</span>
+                <span class="tag">Scripts</span>
+                <span class="tag">Automatización</span>
+            </div>
+
+            <h2>El objetivo del proyecto</h2>
+            <p>
+                Crear pequeñas herramientas que permitan automatizar
+                tareas repetitivas y reducir el tiempo dedicado a
+                determinadas operaciones administrativas.
+            </p>
+
+            <h2>Ejemplos de funcionalidades</h2>
+            <ul>
+                <li>Organización automática de archivos.</li>
+                <li>Generación de informes básicos.</li>
+                <li>Comprobación del estado de servicios propios.</li>
+                <li>Procesamiento de archivos CSV y datos.</li>
+                <li>Automatización de tareas programadas.</li>
+                <li>Registro de resultados y errores.</li>
+            </ul>
+
+            <h2>Resultado esperado</h2>
+            <p>
+                Herramientas sencillas, documentadas y reutilizables
+                que ayuden a mejorar la eficiencia de determinados
+                procesos tecnológicos.
+            </p>
+        </div>
+    </section>
+</div>
+
+
+<!-- ================= CONTACTO ================= -->
+
+<div class="page" id="contacto">
+    <div class="page-header">
+        <div class="container">
+            <span class="eyebrow">Contact</span>
+            <h1>Hablemos de tu <span class="gradient-text">proyecto</span></h1>
+            <p>
+                Cuéntanos qué necesitas. Estudiaremos tu situación y
+                buscaremos una solución tecnológica adecuada.
+            </p>
+        </div>
+    </div>
+
+    <section>
+        <div class="container">
+            <div class="contact-panel">
+                <span class="eyebrow">Contacto directo</span>
+                <h2>Estamos aquí para ayudarte.</h2>
+
+                <p>
+                    Tanto si necesitas configurar una red, mejorar la seguridad
+                    de tus sistemas, preparar un servidor o desarrollar una web,
+                    puedes escribirnos y explicarnos tu idea.
+                </p>
+
+                <p>
+                    Nos gusta trabajar de forma cercana y transparente:
+                    escuchamos tus necesidades, valoramos las opciones
+                    y te explicamos qué solución puede encajar mejor.
+                </p>
+
+                <p>Correo electrónico:</p>
+
+                <a class="email" href="mailto:ericverdugomz@gmail.com">
+                    ericverdugomz@gmail.com
+                </a>
+
+                <div style="margin-top:28px">
+                    <a class="btn btn-primary"
+                       href="mailto:ericverdugomz@gmail.com?subject=Consulta%20sobre%20servicios%20tecnol%C3%B3gicos">
+                        Enviar un correo
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+</main>
+
+<footer>
+    <div class="container footer-content">
+        <div class="logo nexatech-logo">NEXA<span>TECH</span><small>TECHNOLOGY PARTNERS</small></div>
+        <p>Tecnología con visión. Soluciones con propósito. Confianza para avanzar.</p>
+        <p>© 2026 NexaTech. Todos los derechos reservados.</p>
+    </div>
+</footer>
+
+<script>
+function navigate() {
+    const id = window.location.hash.replace("#", "") || "inicio";
+
+    const pages = document.querySelectorAll(".page");
+    let found = false;
+
+    pages.forEach(page => {
+        const active = page.id === id;
+        page.classList.toggle("active", active);
+        if (active) found = true;
+    });
+
+    if (!found) {
+        document.getElementById("inicio").classList.add("active");
+    }
+
+    document.querySelectorAll(".nav-links a").forEach(link => {
+        link.classList.toggle(
+            "active",
+            link.getAttribute("href") === "#" + id
+        );
+    });
+
+    document.getElementById("navLinks").classList.remove("open");
+    window.scrollTo(0, 0);
+}
+
+function toggleMenu() {
+    document.getElementById("navLinks").classList.toggle("open");
+}
+
+window.addEventListener("hashchange", navigate);
+window.addEventListener("DOMContentLoaded", navigate);
+</script>
+
+</body>
+</html>
